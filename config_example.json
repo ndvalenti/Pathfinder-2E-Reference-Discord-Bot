@@ -1,0 +1,11 @@
+{
+    "token" : "",
+    "prefix" : "!",
+    "roles" : "CREATE_INSTANT_INVITE",
+    "allowdm" : true,
+    "allownextprevreact" : true,
+    "allowfulltextreact" : true,
+    "locale" : "loc/loc-en.json",
+    "spell" : "data/spells.json",
+    "reference" : "data/reference.json"
+}

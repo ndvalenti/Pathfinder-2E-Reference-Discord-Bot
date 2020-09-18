@@ -1,0 +1,100 @@
+{
+    "command" : {
+        "help" : {
+            "name" : "help",
+            "short" : "h",
+            "title" : "FailBot Command List:",
+            "text" : "**Help Usage:**\n`!help [COMMAND]` | `!h [COMMAND]`\n\n**Dice Roller**\n\t`!roll` | `!r`\n\n**Spell Lookup**\n`!spell` | `!s`\n\n**Condition Lookup**\n`!condition` | `!c`\n\n**Monster Ability Lookup**\n`!monsterability` | `!m`\n\n**Weapon Trait Lookup**\n`!weapontrait` | `!w`\n\n**Exploration Action Lookup**\n\t`!explorationaction` | `!e`\n\n**Lookup List**\n`!list` | `!l`\n\nUse messages with `![Command]` formatting to interact with this bot\n\nUse `!help` or `!h` followed by any valid command to get more detailed help on that command's usage"
+        },
+
+        "roll" : {
+            "name" : "roll",
+            "short" : "r",
+            "fail" : "Roll failed -- Argument malformed",
+            "help" : "**Dice Roller:**\nRoll the dice indicated by the arguments\n`!roll [ARGUMENTS]` | `!r [ARGUMENTS]`\n\n**Example:**\nTo roll two 20-sided dice\n`!roll 2d20` | `!r 2d20`\n\nUse `+` and `-` to join several dice rolls or constants together\n`!roll 2d6+1`\n`!r 1d20-4`\n`!r 2d10+1d6+1`"
+        },
+
+        "spell" : {
+            "name" : "spell",
+            "short" : "s",
+            "fail" : "No matching spell found",
+            "help" : "**Spell Lookup:**\nSearch for and display the spell best matching the supplied search term\n`!spell [SEARCH TERMS]` | `!s [SEARCH TERMS]`\n\n**Example:**\nTo look up the spell Acid Splash\n`!spell acid splash` | `!s acid splash`\n\nPartial searches such as `!s acid` will also work but may not always return the desired result\n\nLookup will attempt to find the best available match using the search criteria given.\nUse any reacts below the result to interact further."
+        },
+
+        "condition" : {
+            "name" : "condition",
+            "short" : "c",
+            "fail" : "No matching condition found",
+            "help" : "**Condition Lookup:**\nSearch for and display the condition best matching the supplied search term\n`!condition [SEARCH TERMS]` | `!c [SEARCH TERMS]`\n\n**Example:**\nTo look up the condition Dazzled\n`!condition dazzled` | `!c dazzled`\n\nPartial searches such as `!c dazz` will also work but may not always return the desired result\n\nLookup will attempt to find the best available match using the search criteria given.\nUse any reacts below the result to interact further."
+        },
+
+        "monsterability" : {
+            "name" : "monsterability",
+            "short" : "m",
+            "fail" : "No matching monster ability found",
+            "help" : "**Monster Ability Lookup:**\nSearch for and display the monster ability best matching the supplied search term\n`!monsterability [SEARCH TERMS]` | `!m [SEARCH TERMS]`\n\n**Example:**\nTo look up the monster ability Catch Rock\n`!monsterability catch rock` | `!m catch rock`\n\nPartial searches such as `!m catch` will also work but may not always return the desired result\n\nLookup will attempt to find the best available match using the search criteria given.\nUse any reacts below the result to interact further."
+        },
+
+        "weapontrait" : {
+            "name" : "weapontrait",
+            "short" : "w",
+            "fail" : "No matching weapon trait found",
+            "help" : "**Weapon Trait Lookup:**\nSearch for and display the weapon trait best matching the supplied search term\n`!weapontrait [SEARCH TERMS]` | `!w [SEARCH TERMS]`\n\n**Example:**\nTo look up the weapon trait Finesse\n`!weapontrait finesse` | `!w finesse`\n\nPartial searches such as `!w fin` will also work but may not always return the desired result\n\nLookup will attempt to find the best available match using the search criteria given.\nUse any reacts below the result to interact further."
+        },
+
+        "exploration" : {
+            "name" : "explorationaction",
+            "short" : "e",
+            "fail" : "No matching exploration action found",
+            "help" : "**Exploration Action Lookup:**\nSearch for and display the exploration action best matching the supplied search term\n`!explorationaction [SEARCH TERMS]` | `!e [SEARCH TERMS]`\n\n**Example:**\nTo look up the exploration action Detect Magic \n`!explorationaction detect magic` | `!e detect magic`\n\nPartial searches such as `!e detect` will also work but may not always return the desired result\n\nLookup will attempt to find the best available match using the search criteria given.\nUse any reacts below the result to interact further."
+        },
+
+        "list" : {
+            "name" : "list",
+            "short" : "l",
+            "fail" : "Not a valid list command",
+            "help" : "**Get Command Reference List:**\nDisplay the possible search terms for the condition, monster ability, weapon trait, or exploration action command\n`!list [ARGUMENTS]` | `!l [ARGUMENTS]`\n\n**Example:**\nTo retrieve a list of available weapon traits\n`!list weapontraits ` | `!l weapontraits` | `!list w` | `!l w`\n\nPartial searches will not return a result, the argument should be a full valid command"
+        },
+
+        "default"   : {
+            "text" : "Invalid Command\nCommands must be in the following form:\n\n`!<COMMAND> [OPTIONS]`\n\nType `!help` for a list of valid commands"
+        }
+    },
+
+    "text" : {
+        "permissionfail" : "Error: Insufficient Permissions",
+        "help" : "Help",
+        "spellembed" : {
+            "spelllookup" : "Spell Lookup",
+            "attributes" : "Attributes",
+            "description" : "Description",
+            "result" : "Result",
+            "of" : "of",
+            "to" : "to",
+            "effect" : "Effect",
+            "traditions" : "Traditions",
+            "casttime" : "Cast Time",
+            "trigger" : "Trigger",
+            "range" : "Range",
+            "area" : "Area",
+            "targets" : "Targets",
+            "duration" : "Duration",
+            "requirements" : "Requirements",
+            "cost" : "Cost",
+            "savingthrow" : "Saving Throw",
+            "url" : "URL"
+        },
+        "refembed" : {
+            "condition" : "Condition",
+            "monsterability" : "Monster Ability",
+            "weapontrait" : "Weapon Trait",
+            "explorationaction" : "Exploration Action",
+            "list" : "List",
+            "casttime" : "Cast Time"
+        },
+        "rollembed" : {
+            "diceroller" : "Dice Roller",
+            "result" : "Result"
+        }
+    }
+}
