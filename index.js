@@ -1,12 +1,6 @@
 const Discord = require ('discord.js');
 const client = new Discord.Client();
 
-// this information needs to go in the readme for final product
-// config.token must be bot's token
-// config.prefix must be preferred command prefix
-// config.locale must be the localization file in loc
-// config.spell must be the spell file in data
-// config.roles must include minimum roles necessary to use bot (will default to all if blank); must be an argument list compatible with member.hasPermission()
 const config = require ('./config.json');
 const loc = require ('./' + config.locale);
 const spelljson = require ('./' + config.spell);
@@ -41,7 +35,7 @@ client.on('message', async message => {
     if (config.roles !== '') {
         if (message.channel.type !== 'dm') {
             if (!message.member.hasPermission([config.roles])) {
-                return message.author.send('```' + loc.text.permissionfail + '```');
+                return message.author.send(ApplyCodeBlockMarkdown(loc.text.permissionfail));
             }
         } else if (config.allowdm === false) {
             return;
@@ -49,7 +43,7 @@ client.on('message', async message => {
     }
 
     // Split the message into the command and arguments taken from loc (localization file set in config.json)
-    const args = message.content.slice(prefix.length).trim().split(/\s+/g);
+    const args = message.content.slice(prefix.length).split(/\s+/g);
     const cmd = args.shift().toLowerCase();
 
     switch(cmd) {
@@ -87,7 +81,7 @@ client.on('message', async message => {
                 var postresult = DiceRoller.RollStringAndPostAsEmbed(message, rollstring);
 
                 if (postresult === null) {
-                    message.channel.send('```' + loc.command.roll.fail + '```');
+                    message.channel.send(ApplyCodeBlockMarkdown(loc.command.roll.fail));
                 }
             } else {
                 var HelpEmbed = new Discord.MessageEmbed();
@@ -104,7 +98,7 @@ client.on('message', async message => {
                 var postresult = Spell.PostSpellResultArrayAsEmbed(message, results);
 
                 if (postresult === null) {
-                    message.channel.send('```' + loc.command.spell.fail + '```');
+                    message.channel.send(ApplyCodeBlockMarkdown(loc.command.spell.fail));
                 }
             } else {
                 var HelpEmbed = new Discord.MessageEmbed();
@@ -121,7 +115,7 @@ client.on('message', async message => {
                 var postresult = Reference.PostReferenceResultEmbed(message, results);
 
                 if (postresult === null) {
-                    message.channel.send('```' + loc.command.condition.fail + '```');
+                    message.channel.send(ApplyCodeBlockMarkdown(loc.command.condition.fail));
                 }
             } else {
                 var HelpEmbed = new Discord.MessageEmbed();
@@ -138,7 +132,7 @@ client.on('message', async message => {
                 var postresult = Reference.PostReferenceResultEmbed(message, results);
 
                 if (postresult === null) {
-                    message.channel.send('```' + loc.command.monsterability.fail + '```');
+                    message.channel.send(ApplyCodeBlockMarkdown(loc.command.monsterability.fail));
                 }
             } else {
                 var HelpEmbed = new Discord.MessageEmbed();
@@ -155,7 +149,7 @@ client.on('message', async message => {
                 var postresult = Reference.PostReferenceResultEmbed(message, results);
 
                 if (postresult === null) {
-                    message.channel.send('```' + loc.command.weapontrait.fail + '```');
+                    message.channel.send(ApplyCodeBlockMarkdown(loc.command.weapontrait.fail));
                 }
             } else {
                 var HelpEmbed = new Discord.MessageEmbed();
@@ -172,7 +166,7 @@ client.on('message', async message => {
                 var postresult = Reference.PostReferenceResultEmbed(message, results);
 
                 if (postresult === null) {
-                    message.channel.send('```' + loc.command.explorationaction.fail + '```');
+                    message.channel.send(ApplyCodeBlockMarkdown(loc.command.explorationaction.fail));
                 }
             } else {
                 var HelpEmbed = new Discord.MessageEmbed();
@@ -201,7 +195,7 @@ client.on('message', async message => {
 
         // Invalid Command
         default:
-            message.channel.send(ApplyCommandPrefixToLocalizedText('```' + loc.command.default.text + '```'));
+            message.channel.send(ApplyCommandPrefixToLocalizedText(ApplyCodeBlockMarkdown(loc.command.default.text)));
             break;
     }
 });
@@ -260,10 +254,10 @@ function BuildListEmbed(arg) {
             ExplorationArray.forEach (el => { body.push(el.name); });
             break;
         default:
-            return '```' + loc.command.list.fail + '```';
+            return ApplyCodeBlockMarkdown(loc.command.list.fail);
     }
     title = title + ' ' + loc.text.refembed.list;
-    embed.setAuthor(title).setDescription('```' + body.join(', ') + '```');
+    embed.setAuthor(title).setDescription(ApplyCodeBlockMarkdown(body.join(', ')));
     return embed;
 }
 
@@ -302,11 +296,9 @@ function ApplyCommandPrefixToLocalizedText(s) {
     return s.replace(/\!/g, prefix); 
 }
 
-// Takes two bools and returns the logical value of an Exclusive OR operation
-// A OR B but NOT both returns true
-function LogicalXOR(a, b) {
-    if ((a && !b) || (b && !a)) return true;
-    return false;
+// Markdown string s as a codeblock and return it
+function ApplyCodeBlockMarkdown(s) {
+    return ('```' + s + '```');
 }
 
 client.login(config.token);

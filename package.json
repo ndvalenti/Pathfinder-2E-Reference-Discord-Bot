@@ -1,6 +1,6 @@
 {
   "name": "pathfinder-2e-reference-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This bot is an unofficial basic diceroller and provider of lookup functionality for spells, conditions, monster abilities, weapon traits, and exploration actions using the Pathfinder 2E ruleset. It is designed to speed up combat and exploration specifically by providing ready access to the kinds of information players and GMs are most likely to need to reference during those play stages.",
   "main": "index.js",
   "scripts": {
