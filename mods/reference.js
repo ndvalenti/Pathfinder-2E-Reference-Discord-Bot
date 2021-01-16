@@ -31,7 +31,7 @@ class Reference {
         if (this.action !== undefined) {
             desc = '**' + locale.casttime + '** ' + this.action + '\n';
         }
-        desc += this.description + '```';
+        desc += this.description;
         var truncateddesc = desc;
         if (truncateddesc.length >= limits.fieldvalue) {
             truncateddesc = truncateddesc.substring(0, limits.fieldvalue - 4);
