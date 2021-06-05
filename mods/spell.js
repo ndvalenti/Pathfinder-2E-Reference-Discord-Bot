@@ -113,11 +113,14 @@ class Spell {
             .setThumbnail(Message.author.avatarURL())
             .setURL(url)
             .setDescription(description)
-            .setFooter(footer)
-            .addFields(
-                { name: attname, value: truncatedattributesblock },
-                { name: descname, value: truncateddescriptionblock }
-            );
+            .setFooter(footer);
+            
+        if (truncatedattributesblock !== '') {
+            embed.addField(attname, truncatedattributesblock, false);
+        }
+        if (truncateddescriptionblock !== '') {
+            embed.addField(descname, truncateddescriptionblock, false);
+        }
             
         
         var sent = Message.channel.send(embed).then(async sentEmbed => {
